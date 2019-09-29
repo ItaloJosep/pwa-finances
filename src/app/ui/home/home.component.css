@@ -1,0 +1,16 @@
+.body {
+    padding-top: 6em;
+}
+
+.title-list {
+    padding: 0 0.5em 0.5em 0.5em;
+    font-size: 2em;
+    color: black;
+    margin: 0;
+}
+
+.list {
+    height: auto;
+    width: 100%;
+    padding: 0.5em 1em;
+}

@@ -7,9 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-/**
-   * @description Obtém o titulo da modal
-   */
+  /**
+  * @description Obtém o titulo da tela
+  */
   @Input() Title: string;
 
   constructor() { }
