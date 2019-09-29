@@ -1,0 +1,22 @@
+.float-button {
+    position: fixed;
+    height: 5em;
+    width: 5em;
+    bottom: 1.5em;
+    right: 1.5em;
+    border-radius: 3em;
+}
+
+.float-button img {
+    height: 2em;
+    width: 2em;
+    margin: 1.3em 0.8em;
+}
+
+.fab-normal-color {
+    background-color: #0FA954;
+}
+
+.fab-clicked-color {
+    background-color: gray;
+}

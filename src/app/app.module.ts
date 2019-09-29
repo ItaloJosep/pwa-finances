@@ -10,11 +10,15 @@ import { HomeComponent } from './ui/home/home.component';
 
 // Routes
 import { appRoutes } from './app-routing.module';
+import { HeaderComponent } from './ui/header/header.component';
+import { FabMoreComponent } from './ui/fab-more/fab-more.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent,
+    FabMoreComponent
   ],
   imports: [
     BrowserModule,
