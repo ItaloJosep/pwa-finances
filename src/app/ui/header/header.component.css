@@ -3,6 +3,7 @@
     margin: auto !important;
     height: 5em;
     width: 100%;
+    z-index: 100;
 }
 
 .icon-image {

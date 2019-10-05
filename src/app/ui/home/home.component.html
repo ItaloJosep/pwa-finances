@@ -2,7 +2,9 @@
 <app-fab-more (onClick)="fabClick()"></app-fab-more>
 
 <div class="body">
-    <h1 class="title-list">Seus principais gastos</h1>
+    <app-donut-chart></app-donut-chart>
+
+    <h1 class="title-list"><br>Seus principais gastos</h1>
 
     <div class="list" *ngFor="let item of listItens">
         <app-item-list-home Title={{item.title}} Price={{item.price}} TagColor={{item.tagColor}} AvatarColor={{item.avatarColor}}></app-item-list-home>
