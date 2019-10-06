@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
   }
 
   fabClick() {
-    console.log("click fab")
+    this.router.navigate(['/register'])
   }
 
 }

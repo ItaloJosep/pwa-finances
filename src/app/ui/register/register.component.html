@@ -1,0 +1,58 @@
+<app-header Title={{title}}></app-header>
+
+<div class="container-register">
+    <form class="body">
+        <div class="row">
+            <div class="form-check col-6 radio-buttom">
+                <input type="radio" class="form-check-input" id="receita" name="receita" [(ngModel)]="template" [value]="receita" style="margin-top:7px">
+                <label class="form-check-label" for="receita" style="margin-top:0px">Receita</label>
+            </div>
+
+            <div class="form-check col-6 radio-buttom">
+                <input type="radio" class="form-check-input" id="despesa" name="despesa" [(ngModel)]="template" [value]="despesa" style="margin-top:7px">
+                <label class="form-check-label" for="despesa">Despesa</label>
+            </div>
+        </div>
+
+        <div class="group">
+            <input class="input-text" type="number" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="label-name">Valor</label>
+        </div>
+
+        <div class="row row-select">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref" style="font-size: 14px;">Preference</label>
+            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                  <option selected>Choose...</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+        </div>
+
+        <div class="row" *ngIf="!pagamento">
+            <div class="form-check col-6 radio-buttom">
+                <input type="radio" class="form-check-input" id="avista" name="avista" [(ngModel)]="pagamento" [value]="avista" style="margin-top:7px">
+                <label class="form-check-label" for="avista" style="margin-top:0px">A vista</label>
+            </div>
+
+            <div class="form-check col-6 radio-buttom">
+                <input type="radio" class="form-check-input" id="parcelado" name="parcelado" [(ngModel)]="pagamento" [value]="parcelado" style="margin-top:7px">
+                <label class="form-check-label" for="parcelado">Parcelado</label>
+            </div>
+        </div>
+
+        <div class="group" *ngIf="!pagamento">
+            <input class="input-text" type="number" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="label-name">Nº parcelas</label>
+        </div>
+
+    </form>
+</div>
+
+<div class="bottom-button">
+    <p>Salvar</p>
+</div>

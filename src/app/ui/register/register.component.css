@@ -1,0 +1,158 @@
+.container-register {
+    padding: 6em 2em 0em 2em;
+    font-family: sans-serif;
+}
+
+.row {
+    margin: 0;
+}
+
+.body {
+    width: 100%;
+    height: auto;
+    background-color: #E9E9E9;
+    padding: 2em;
+    border-radius: 1em;
+}
+
+.radio-buttom {
+    text-align: left;
+}
+
+.group {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.form-check-label {
+    font-size: 16px;
+}
+
+.input-text {
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    width: 100%;
+    background-color: transparent;
+    border-bottom: 1px solid #757575;
+}
+
+.input-text:focus {
+    outline: none;
+}
+
+.label-name {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.input-text:focus~.label-name,
+.input-text:valid~.label-name {
+    top: -20px;
+    font-size: 14px;
+    color: #929292;
+}
+
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.bar:before,
+.bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: #929292;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+    left: 50%;
+}
+
+.bar:after {
+    right: 50%;
+}
+
+.input-text:focus~.bar:before,
+.input-text:focus~.bar:after {
+    width: 50%;
+}
+
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.input-text:focus~.highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #929292;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #929292;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #929292;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+.row-select {
+    margin-bottom: 15px;
+}
+
+.bottom-button {
+    position: fixed;
+    width: 100%;
+    height: 3em;
+    top: calc(100% - 3em);
+    text-align: center;
+    color: white;
+    background-color: #0FA954;
+    font-size: 16px;
+    padding-top: 0.7em;
+}
