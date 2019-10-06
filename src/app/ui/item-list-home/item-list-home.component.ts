@@ -10,22 +10,22 @@ export class ItemListHomeComponent implements OnInit {
   /**
   * @description Obtém o titulo do item
   */
-  @Input() Title: string;
+  @Input() Title: string
 
   /**
   * @description Obtém o preço
   */
-  @Input() Price: string;
+  @Input() Price: string
   
   /**
   * @description Obtém a cor da tag
   */
-  @Input() TagColor: string;
+  @Input() TagColor: string
 
   /**
   * @description Obtém a cor do avatar
   */
-  @Input() AvatarColor: string;
+  @Input() AvatarColor: string
 
   constructor() { }
 

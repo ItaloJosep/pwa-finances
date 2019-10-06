@@ -2,36 +2,18 @@
     <div class="donut-chart-block block">
         <h2 class="titular">Mensal</h2>
         <div class="donut-chart">
-            <div id="porcion1" class="recorte">
-                <div class="quesito ios" data-rel="25"></div>
-            </div>
-            <div id="porcion2" class="recorte">
-                <div class="quesito mac" data-rel="25"></div>
-            </div>
-            <div id="porcion3" class="recorte">
-                <div class="quesito win" data-rel="25"></div>
-            </div>
-            <div id="porcionFin" class="recorte">
-                <div class="quesito linux" data-rel="25"></div>
+            <div *ngFor="let item of chartValues">
+                <div class="recorte" [ngStyle]="{transform: item.startChart}">
+                    <div class="quesito" [ngStyle]="{backgroundColor: item.color, transform: item.sizeChart}"></div>
+                </div>
             </div>
             <p class="center-date">OUT</p>
         </div>
-        <ul class="os-percentages horizontal-list">
-            <li>
-                <p class="ios os scnd-font-color">Comida</p>
-                <p class="os-percentage">21<sup>%</sup></p>
-            </li>
-            <li>
-                <p class="mac os scnd-font-color">Comida</p>
-                <p class="os-percentage">39<sup>%</sup></p>
-            </li>
-            <li>
-                <p class="linux os scnd-font-color">Comida</p>
-                <p class="os-percentage">9<sup>%</sup></p>
-            </li>
-            <li>
-                <p class="win os scnd-font-color">Comida</p>
-                <p class="os-percentage">31<sup>%</sup></p>
+        <ul class="os-percentages horizontal-list" *ngFor="let item of chartValues">
+            <li [style.width.%]="categorySize" *ngIf="item.percentage > 0">
+                <div [ngStyle]="{backgroundColor: item.color}" [style.width.%]="100" [style.height.px]="4"></div>
+                <p class="os scnd-font-color">Comida</p>
+                <p class="os-percentage">{{item.percentage}}<sup>%</sup></p>
             </li>
         </ul>
     </div>

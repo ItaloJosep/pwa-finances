@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TotalMoneyModel } from 'src/app/model/totals_money.model';
 
 @Component({
   selector: 'app-home',
@@ -39,11 +40,22 @@ export class HomeComponent implements OnInit {
     },
   ]
 
+  chartTotal = 130.00
+  chartValuesArray: Array<TotalMoneyModel> = []
+  chartValues: string
+
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
+    this.chartValuesArray.push (new TotalMoneyModel(80, "#E64C65", "Comida"))
+    this.chartValuesArray.push (new TotalMoneyModel(10, "#11A8AB", "Comida"))
+    this.chartValuesArray.push (new TotalMoneyModel(13, "#4FC4F6", "Comida"))
+    this.chartValuesArray.push (new TotalMoneyModel(10, "#4FC4F6", "Comida"))
+    this.chartValuesArray.push (new TotalMoneyModel(17, "#FCB150", "Comida"))
+
+    this.chartValues = JSON.stringify(this.chartValuesArray)
   }
 
   fabClick() {
