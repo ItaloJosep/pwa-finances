@@ -16,6 +16,10 @@ import { RegisterComponent } from './ui/register/register.component';
 // Routes
 import { appRoutes } from './app-routing.module';
 
+// Services
+import { StartDatabaseService } from './services/_start-database.service';
+import { CategoriasService } from './services/categorias.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +35,10 @@ import { appRoutes } from './app-routing.module';
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    StartDatabaseService,
+    CategoriasService
+  ],
   bootstrap: [AppComponent, HomeComponent]
 })
 export class AppModule { }

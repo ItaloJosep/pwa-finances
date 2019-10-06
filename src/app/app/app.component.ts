@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StartDatabaseService } from '../services/_start-database.service';
+import { CategoriasService } from '../services/categorias.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +12,12 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit{
   
   constructor(
-    private router: Router
+    private router: Router,
+    private StartDatabaseService: StartDatabaseService,
+    private CategoriaService: CategoriasService
   ) {
-
+    this.StartDatabaseService.StartOfflineDB();
+    this.CategoriaService.Seed();
   }
 
   ngOnInit(): void {
