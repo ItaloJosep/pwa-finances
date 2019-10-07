@@ -11,7 +11,7 @@ import { HeaderComponent } from './ui/header/header.component';
 import { HomeComponent } from './ui/home/home.component';
 import { ItemListHomeComponent } from './ui/item-list-home/item-list-home.component';
 import { RegisterComponent } from './ui/register/register.component';
-
+import { MenuComponent } from './ui/menu/menu.component';
 
 // Routes
 import { appRoutes } from './app-routing.module';
@@ -29,7 +29,8 @@ import { OperationMoneyService } from './services/operation_money.service';
     HeaderComponent,
     HomeComponent,
     ItemListHomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

@@ -24,11 +24,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private chRef: ChangeDetectorRef
-  ) {
-    setInterval(() => {
-      this.chRef.detectChanges()
-    }, 1500)
-   }
+  ) {}
 
   ngOnInit() {
    

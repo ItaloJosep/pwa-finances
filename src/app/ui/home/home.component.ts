@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { TotalMoneyModel } from 'src/app/model/totals_money.model';
 import { OperationMoneyService } from 'src/app/services/operation_money.service';
@@ -20,10 +20,13 @@ export class HomeComponent implements OnInit {
   chartValuesArray: Array<TotalMoneyModel> = []
   chartValues: string = null
 
+  showMenu: boolean = false;
+
   constructor(
     private router: Router,
     private OperationMoneyService: OperationMoneyService,
     private chRef: ChangeDetectorRef,
+    private ngZone: NgZone
   ) { 
     this.getChart()     
     this.getExpense()
@@ -70,8 +73,20 @@ export class HomeComponent implements OnInit {
     }, error => {})
   }
 
-  private onClickMenu() {
+  onShowMenu() {
+    this.showMenu = true;
+  }
 
+  onHideMenu() {
+    this.showMenu = false;
+  }
+
+  onClear() {
+    this.OperationMoneyService.delete(success=> {
+      this.ngZone.run(() => {
+        window.location.reload();
+      })
+    }, error => {})
   }
 
 }

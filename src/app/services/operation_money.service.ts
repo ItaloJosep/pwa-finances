@@ -64,5 +64,11 @@ export class OperationMoneyService extends DatabaseHelperService {
 
         }, error)
     }
+
+    delete(success, error) {
+        this.db.transaction((tx) => {
+            tx.executeSql(`DELETE FROM operationMoney`);
+        }, error, success);
+    }
     
 }

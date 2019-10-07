@@ -1,5 +1,6 @@
-<app-header Title={{title}} isMenu="1" (onClickMenu)="onClickMenu()"></app-header>
+<app-header Title={{title}} isMenu="1" (onClickMenu)="onShowMenu()"></app-header>
 <app-fab-more (onClick)="fabClick()"></app-fab-more>
+<app-menu *ngIf="showMenu" (hideMenu)="onHideMenu()" (clear)="onClear()"></app-menu>
 
 <div class="body">
     <app-donut-chart *ngIf="chartValues != null" chartValuesString={{chartValues}} chartTotal={{chartTotal}} categorySize="{{sizeLegend}}"></app-donut-chart>
