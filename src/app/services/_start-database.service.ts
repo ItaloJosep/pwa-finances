@@ -14,12 +14,20 @@ export class StartDatabaseService extends DatabaseHelperService {
     }
 
     private CreateTable(tx: any){
-        tx.executeSql(`CREATE TABLE IF NOT EXISTS categorias (
+        tx.executeSql(`CREATE TABLE IF NOT EXISTS category (
             Id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
             color TEXT,
-            icon TEXT,
             isReceita NUMERIC
+        )`)
+
+        tx.executeSql(`CREATE TABLE IF NOT EXISTS operationMoney (
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            isIncome NUMERIC,
+            money NUMERIC,
+            categoryId INTEGER,
+            isCashPayment NUMERIC,
+            amountInstallments INTEGER
         )`)
     }
 

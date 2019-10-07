@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { CategoriasService } from 'src/app/services/categorias.service';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { CategoryService } from 'src/app/services/category.service';
 import { OperationMoneyModel } from 'src/app/model/operation_money.model';
+import { OperationMoneyService } from 'src/app/services/operation_money.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +11,7 @@ import { OperationMoneyModel } from 'src/app/model/operation_money.model';
 })
 export class RegisterComponent implements OnInit {
     
+  title = "Minhas Finanças"
   receita: boolean = true;
   despesa: boolean = false;
   
@@ -20,10 +23,14 @@ export class RegisterComponent implements OnInit {
   categoryExpense: any[]
   categoryIncome: any[]
   constructor(
-    private CategoriaService: CategoriasService
+    private CategoriaService: CategoryService,
+    private OperationMoneyService: OperationMoneyService,
+    private router: Router,
+    private ngZone: NgZone
   ) { 
     this.dropDownCategoryExpense()
     this.dropDownCategoryIncome()
+    this.operationMoney.isIncome = true;
   }
 
   ngOnInit() {
@@ -35,8 +42,9 @@ export class RegisterComponent implements OnInit {
 
   dropDownCategoryExpense() {
     this.CategoriaService.get(false, (result: any[]) => {
-      this.categoryExpense = result;
-      console.log(this.categoryExpense)
+      this.ngZone.run(() => {
+        this.categoryExpense = result;
+      })
     }, () => {
 
     })
@@ -44,10 +52,26 @@ export class RegisterComponent implements OnInit {
 
   dropDownCategoryIncome() {
     this.CategoriaService.get(true, (result: any[]) => {
-      this.categoryIncome = result
-      console.log(this.categoryIncome)
+      this.ngZone.run(() => {
+        this.categoryIncome = result
+      })
     }, () => {
 
+    })
+  }
+
+  onRegister() {
+    this.OperationMoneyService.post(this.operationMoney, 
+      success => {
+        this.onClickBack()
+        console.log("sucesso")
+      }, ()=> {console.log("Erro")})
+
+  }
+
+  private onClickBack() {
+    this.ngZone.run(() => {
+      this.router.navigate(['/home'])
     })
   }
 

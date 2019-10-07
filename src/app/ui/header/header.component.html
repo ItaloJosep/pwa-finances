@@ -1,5 +1,8 @@
 <div class="header row position-fixed">
-    <div class="icon-image col-2 col-md-1 col-lg-1">
+    <div class="icon-image col-2 col-md-1 col-lg-1" *ngIf="isMenu == 0" (click)="goBack()">
+        <img src="assets/img/icon/icon_arrow_back.png" />
+    </div>
+    <div class="icon-image col-2 col-md-1 col-lg-1" *ngIf="isMenu == 1" (click)="goMenu()">
         <img src="assets/img/icon/icon_menu.png" />
     </div>
     <div class="title-menu col-10">

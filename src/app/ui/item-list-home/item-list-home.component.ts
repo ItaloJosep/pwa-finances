@@ -22,11 +22,6 @@ export class ItemListHomeComponent implements OnInit {
   */
   @Input() TagColor: string
 
-  /**
-  * @description Obtém a cor do avatar
-  */
-  @Input() AvatarColor: string
-
   constructor() { }
 
   ngOnInit() {

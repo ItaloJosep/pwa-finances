@@ -12,8 +12,8 @@
         <ul class="os-percentages horizontal-list" *ngFor="let item of chartValues">
             <li [style.width.%]="categorySize" *ngIf="item.percentage > 0">
                 <div [ngStyle]="{backgroundColor: item.color}" [style.width.%]="100" [style.height.px]="4"></div>
-                <p class="os scnd-font-color">Comida</p>
-                <p class="os-percentage">{{item.percentage}}<sup>%</sup></p>
+                <p class="os scnd-font-color">{{item.categoria}}</p>
+                <p class="os-percentage">R${{item.money}}</p>
             </li>
         </ul>
     </div>

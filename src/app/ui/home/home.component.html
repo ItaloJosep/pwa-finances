@@ -1,12 +1,18 @@
-<app-header Title={{title}}></app-header>
+<app-header Title={{title}} isMenu="1" (onClickMenu)="onClickMenu()"></app-header>
 <app-fab-more (onClick)="fabClick()"></app-fab-more>
 
 <div class="body">
-    <app-donut-chart chartValuesString={{chartValues}} chartTotal={{chartTotal}} categorySize="20"></app-donut-chart>
+    <app-donut-chart *ngIf="chartValues != null" chartValuesString={{chartValues}} chartTotal={{chartTotal}} categorySize="{{sizeLegend}}"></app-donut-chart>
 
-    <h1 class="title-list"><br>Seus principais gastos</h1>
+    <h1 class="title-list" *ngIf="listItensExpense != null && listItensExpense.length > 0"><br>Seus gastos</h1>
 
-    <div class="list" *ngFor="let item of listItens">
-        <app-item-list-home Title={{item.title}} Price={{item.price}} TagColor={{item.tagColor}} AvatarColor={{item.avatarColor}}></app-item-list-home>
+    <div class="list" *ngFor="let item of listItensExpense">
+        <app-item-list-home Title={{item.title}} Price={{item.price}} TagColor={{item.tagColor}}></app-item-list-home>
+    </div>
+
+    <h1 class="title-list" *ngIf="listItensIncome!= null && listItensIncome.length > 0"><br>Seus ganhos</h1>
+
+    <div class="list" *ngFor="let item of listItensIncome">
+        <app-item-list-home Title={{item.title}} Price={{item.price}} TagColor={{item.tagColor}}></app-item-list-home>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<app-header Title={{title}}></app-header>
+<app-header Title={{title}} isMenu="0" (onClickBack)="onClickBack()"></app-header>
 
 <div class="container-register">
     <form class="body">
@@ -59,6 +59,6 @@
     </form>
 </div>
 
-<div class="bottom-button">
+<div class="bottom-button" (click)="onRegister()">
     <p>Salvar</p>
 </div>

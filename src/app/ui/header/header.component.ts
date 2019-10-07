@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +12,34 @@ export class HeaderComponent implements OnInit {
   */
   @Input() Title: string;
 
-  constructor() { }
+  /**
+  * @description Obtém o titulo da tela
+  */
+ @Input() isMenu: number;
+
+
+ @Output() onClickMenu: EventEmitter<any> = new EventEmitter();
+
+ @Output() onClickBack: EventEmitter<any> = new EventEmitter();
+
+  constructor(
+    private chRef: ChangeDetectorRef
+  ) {
+    setInterval(() => {
+      this.chRef.detectChanges()
+    }, 1500)
+   }
 
   ngOnInit() {
+   
+  }
+
+  goBack() {
+    this.onClickBack.emit()
+  }
+
+  goMenu() {
+    this.onClickMenu.emit()
   }
 
 }

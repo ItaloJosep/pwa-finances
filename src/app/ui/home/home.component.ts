@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { TotalMoneyModel } from 'src/app/model/totals_money.model';
+import { OperationMoneyService } from 'src/app/services/operation_money.service';
 
 @Component({
   selector: 'app-home',
@@ -11,55 +12,66 @@ export class HomeComponent implements OnInit {
 
   title = "Minhas Finanças"
 
-  listItens = [
-    {
-      title: "Academia",
-      price: "60,00",
-      tagColor: "#6f42c1",
-      avatarColor: "#6f42c1"
-    },{
-      title: "Academia",
-      price: "60,00",
-      tagColor: "#6c757d",
-      avatarColor: "#6c757d"
-    },{
-      title: "Academia",
-      price: "60,00",
-      tagColor: "#20c997",
-      avatarColor: "#20c997"
-    },{
-      title: "Academia",
-      price: "60,00",
-      tagColor: "#ffc107",
-      avatarColor: "#ffc107"
-    },{
-      title: "Academia",
-      price: "60,00",
-      tagColor: "#dc3545",
-      avatarColor: "#dc3545"
-    },
-  ]
+  listItensExpense: any[]
+  listItensIncome: any[]
 
-  chartTotal = 130.00
+  chartTotal = 0
+  sizeLegend = 0 
   chartValuesArray: Array<TotalMoneyModel> = []
-  chartValues: string
+  chartValues: string = null
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private OperationMoneyService: OperationMoneyService,
+    private chRef: ChangeDetectorRef,
+  ) { 
+    this.getChart()     
+    this.getExpense()
+    this.getIncome()
+  }
 
   ngOnInit() {
-    this.chartValuesArray.push (new TotalMoneyModel(80, "#E64C65", "Comida"))
-    this.chartValuesArray.push (new TotalMoneyModel(10, "#11A8AB", "Comida"))
-    this.chartValuesArray.push (new TotalMoneyModel(13, "#4FC4F6", "Comida"))
-    this.chartValuesArray.push (new TotalMoneyModel(10, "#4FC4F6", "Comida"))
-    this.chartValuesArray.push (new TotalMoneyModel(17, "#FCB150", "Comida"))
-
-    this.chartValues = JSON.stringify(this.chartValuesArray)
   }
 
   fabClick() {
     this.router.navigate(['/register'])
+  }
+
+  private getIncome() {
+    this.OperationMoneyService.get(true, success => {
+      this.listItensIncome = success
+
+      this.chRef.detectChanges()
+    }, error => {})
+  }
+
+  private getExpense() {
+    this.OperationMoneyService.get(false, success => {
+      this.listItensExpense = success
+
+      this.chRef.detectChanges()
+    }, error => {})
+  }
+
+  private getChart() {
+    this.OperationMoneyService.getChart(response => {
+      this.chartValuesArray.push(new TotalMoneyModel(response.despesas, "#E64C65", "Despesas"))
+      this.chartValuesArray.push(new TotalMoneyModel(response.receita, "#0FA954", "Receita"))
+      this.chartTotal = response.total
+
+      if(response.despesas > 0 && response.receita > 0) {
+        this.sizeLegend = 50
+      } else {
+        this.sizeLegend = 100
+      }
+
+      this.chartValues = JSON.stringify(this.chartValuesArray)
+      this.chRef.detectChanges()
+    }, error => {})
+  }
+
+  private onClickMenu() {
+
   }
 
 }

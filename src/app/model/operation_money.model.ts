@@ -3,5 +3,5 @@ export class OperationMoneyModel {
     money: number
     categoryId: number = 0
     isCashPayment: boolean = true
-    amountInstallments: number
+    amountInstallments: number = 0
 }

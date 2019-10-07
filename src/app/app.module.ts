@@ -18,7 +18,8 @@ import { appRoutes } from './app-routing.module';
 
 // Services
 import { StartDatabaseService } from './services/_start-database.service';
-import { CategoriasService } from './services/categorias.service';
+import { CategoryService } from './services/category.service';
+import { OperationMoneyService } from './services/operation_money.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CategoriasService } from './services/categorias.service';
   ],
   providers: [
     StartDatabaseService,
-    CategoriasService
+    CategoryService,
+    OperationMoneyService
   ],
   bootstrap: [AppComponent, HomeComponent]
 })
