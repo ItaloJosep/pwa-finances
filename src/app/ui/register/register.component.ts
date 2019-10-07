@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  private onClickBack() {
+  onClickBack() {
     this.ngZone.run(() => {
       this.router.navigate(['/home'])
     })

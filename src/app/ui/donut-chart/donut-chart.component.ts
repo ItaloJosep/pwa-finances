@@ -23,8 +23,8 @@ export class DonutChartComponent implements OnInit {
   */
   @Input() categorySize: number
 
-  private TOTAL_DEG_CHAT = 360
-  private chartValues: any[]
+  TOTAL_DEG_CHAT = 360
+  chartValues: any[]
 
   constructor(private ref: ChangeDetectorRef) { 
     

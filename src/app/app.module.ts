@@ -20,6 +20,8 @@ import { appRoutes } from './app-routing.module';
 import { StartDatabaseService } from './services/_start-database.service';
 import { CategoryService } from './services/category.service';
 import { OperationMoneyService } from './services/operation_money.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { OperationMoneyService } from './services/operation_money.service';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StartDatabaseService,
